@@ -1,0 +1,949 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+    width: 100%;
+    overflow-x: hidden;
+  }
+  
+.header{
+    padding-right: 2rem;
+    justify-content: end;
+    width: 100%;
+    gap: 1rem;
+    max-width: 100%;
+    display: flex;
+    background-color: rgba(0, 0, 0, .8);
+    height: 3rem;
+}
+.header img{
+    align-items: right;
+    height: 2rem;
+    width: 2rem;
+    vertical-align: middle;
+    margin-top: 8px;
+}
+
+.bar img{
+    cursor: pointer;
+    display: none;
+}
+.noti{
+    text-align: right;
+    vertical-align: middle;
+}
+.logo{
+    text-align: center;
+}
+.logo img{
+    height: 4rem;
+    width: 9rem;
+    margin-top: 1.5rem;
+}
+
+.side-bar ul li {
+    padding-top: 1rem;
+    font-weight:800;
+    margin-bottom: -1rem;
+    transition: 1s ease-out;
+}
+.side-bar ul li a:hover {
+    color: #0488f4;
+    transition: .3s ease;
+    text-shadow: 0 0 10px #0488f4;
+    transition: 1s ease-out;
+}
+.close img{
+    background-color: #242424;
+    border-radius: 50%;
+    height: 2.7rem;
+    width: 2.7rem;
+    margin-top: 2px;
+    float: right;
+    margin-right: -3.7rem;
+    cursor: pointer;
+}
+.side-bar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 290px;
+    background-color: rgba(44, 44, 44, 0.979);
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.329);
+    display: none;
+    z-index: 1;
+    justify-content: center;
+}
+.sidebar-log-in {
+    margin-top: 4rem;
+    font-size: 1.4rem;
+    text-align: center;
+    font-weight: 900;
+    color: #007bff;
+}
+.sidebar-log-in a {
+    padding: 2px 2rem;
+    border-color: #007bff;
+    border-style: solid;
+    border-width: 2px;
+}
+.sidebar-log-in a:hover{
+    box-shadow: 0 0 15px #007bff;
+    transition: .3s ease;
+}
+.side-bar ul {
+    list-style-type: none;
+}
+.side-bar a {
+    color: #fff;
+    z-index: 3;
+}
+.side-bar li {
+    text-align: center;
+    margin-top: 2.6rem;
+}
+.side-bar .log-in {
+    margin-top: 2.6rem;
+    padding: 1rem;
+}
+.toggle {
+    height: 2rem;
+    width: 2rem;
+}
+.nav ul{
+    display: inline-flex;
+    gap: 2rem;
+    list-style-type: none;
+    align-items: center;
+    font-weight: 700;
+    margin-top: 1rem;
+}
+.nav {
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Stick it to the top */
+    left: 0; /* Align it to the left */
+    width: 100%; /* Occupy the full width of the viewport */
+    z-index: 1000; /* Ensure it stays on top of other content */
+    background-color: #333; /* Add a background color for better visibility */
+    text-align: center; /* Center align the navigation links */
+    padding: 10px 0; /* Add padding to the top and bottom for spacing */
+}
+
+.nav ul {
+    display: inline-flex; /* Display the list horizontally */
+    gap: 2rem; /* Add some spacing between list items */
+    list-style-type: none; /* Remove default list styles */
+    align-items: center; /* Align items vertically center */
+    font-weight: 700; /* Set font weight to bold */
+    margin-top: 0; /* Remove default margin */
+}
+
+.nav ul li {
+    position: relative;
+}
+
+.nav ul li::after {
+    content: '';
+    height: 3px;
+    width: 0;
+    background: #5FBDFF;
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    transition: 0.5s;
+}
+
+.nav ul li:hover::after {
+    width: 100%;
+}
+/* Add styles to make the login form visible */
+.log-in {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #007bff;
+    background-color: transparent;
+    height: 1.5rem;
+    margin-top: .7rem;
+    margin-right: -1rem;
+    display: block; /* Ensure the login form is visible */
+    position: absolute; /* Position it absolutely */
+    top: 0; /* Align it to the top */
+    right: 2rem; /* Add some right margin */
+    z-index: 1001; /* Ensure it's above other elements */
+}
+
+.log-in a {
+    color: #007bff;
+    background-color: transparent;
+    text-align: center;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-top: 1rem;
+    padding-top: 2rem;
+    color: #007bff; /* Set the link color */
+    background-color: transparent; /* Make the background transparent */
+    text-align: center; /* Center align the text */
+    padding: 8px; /* Add padding to the link */
+    font-weight: 700; /* Set font weight to bold */
+}
+/* Adjust the hover effect for the login link */
+.log-in a:hover {
+    color: #fff; /* Change text color on hover */
+    border-color: #fff;
+    box-shadow: 0 0 10px #007bff;
+    padding: 2px 8px;
+}
+
+.more{
+    text-align: center;
+    border-width: 2px;
+    border-color: white;
+    font-weight: 900;
+    color: white;
+    padding: 2rem 2rem;
+    margin: 1rem auto;
+    animation: animate 1s ease-in-out infinite;
+}
+@keyframes animate{
+    from{
+        text-shadow: 0 0 30px 25px yellow;
+    }
+    to{
+        text-shadow: 0 0 80px #5FBDFF, 0 0 10px #baff5f;
+    }
+}
+.more a{
+    color: yellow;
+    font-size: 2rem;
+}
+.more a:hover{
+    color: yellow;
+    border-style: solid;
+    border-width: 3px;
+    background-color: transparent;
+    padding: .5rem 2rem;
+    border-color: white;
+    margin: 0 auto;
+}
+a{
+    text-decoration: none;
+    color: rgba(255, 255, 255, .8);
+}
+
+.first{
+    background-image: linear-gradient(to bottom, rgba(63, 64, 71, 0.726), rgba(12, 12, 101, 0.548)),url(images/nike.jpg);
+    height: 38rem;
+    background-size: 100%;
+}
+
+.best p{
+    border-style: solid;
+    font-size: 3rem;
+    font-weight: 900;
+    border-width: 8px;
+    border-color: red;
+    background-color: transparent;
+    padding: 2rem 2rem;
+    color: white;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+.best{
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.second{
+    max-width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 4rem;
+	padding-left: 5.5rem;
+	padding-right: 5.5rem;
+    margin-bottom: 2rem;
+}
+.second h2, p{
+    margin-bottom: 1rem;
+}
+.h1{
+    text-align: center;
+    color: grey;    
+    padding-top: 3rem;
+    margin-bottom: 2rem;
+}
+.collection{
+    width: 100%;
+}
+.collection:hover{
+    filter: brightness(85%);
+}
+
+.contact a{
+    font-size: 1rem;
+    border-style: solid;
+    color: black;
+    background-color: transparent;
+    padding: .5rem 2rem;
+    font-weight: 900;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+.contact{
+    max-width: 100%;
+    text-align: center;
+    margin-top: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.contact a:hover{
+    color: white;
+    background-color: rgba(0, 0, 0, .8);
+    border-color: rgba(0, 0, 0, .8);
+    animation: add 1s ease-in-out infinite;
+}
+@keyframes add{
+    from{
+        text-shadow: 0 0 100px white;
+    }
+    to{
+        text-shadow: 0 0 20px white, 0 0 10px #5FBDFF;
+    }
+}
+.touch {
+	text-align: center;
+	color: white;
+    padding-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.check {
+    background-image: none !important;
+    margin-top: 2.5rem;
+    height: 1rem;
+    width: 1rem;
+    visibility: hidden;
+    margin-left: 10px;
+}
+
+.exclamation {
+    margin-top: 2.5rem;
+    height: 1rem;
+    width: 1rem;
+    visibility: hidden;
+    margin-left: 10px;
+}
+.form-control img {
+    margin-right: 28.9rem;
+}
+#log-in_name li, #log-in_email li, #log-in_message li {
+    list-style-type: none;
+    display: inline-flex;
+    position: absolute;
+    margin-top: -2rem;
+    margin-left: -2rem;
+}
+
+#log-in_name p, #log-in_email p, #log-in_message p {
+    color: rgb(245, 57, 57);
+    visibility: hidden;
+}
+
+.form-control.success input, .form-control.success textarea {
+    border-color: rgb(70, 165, 70);
+    border-width: 1px;
+}
+
+.form-control.error input, .form-control.error textarea {
+    border-width: 1px;
+    border-color: rgb(245, 57, 57);
+}
+
+.form-control.success .check {
+    visibility: visible;
+}
+
+.form-control.error .exclamation {
+    visibility: visible;
+}
+.form-control .error-message {
+    visibility: visible;
+    bottom: 0;
+    width: 30rem;
+    margin: 0 auto;
+    text-align: start;
+    letter-spacing: 1px;
+}
+#form {
+    text-align: center;
+    justify-content: center;
+}
+
+#contact-us {
+    background-color: #3C3A47;
+    text-align: start;
+}
+#submitButton {
+    margin-top: 8px;
+}
+
+label {
+	font-size: 1.1rem;
+	color: white;
+	display: block;
+    padding-top: 8px;
+	padding-bottom: .5rem;
+    text-transform: uppercase;
+    width: 30rem;
+    margin: 0 auto;
+    text-align: start;
+    letter-spacing: 1px;
+}
+
+.touch {
+	font-size: 2.7rem;
+	font-weight: 700;
+}
+
+input {
+	height: 2rem;
+    width: 100%;
+}
+
+input, textarea {
+	color: white;
+    width: 30rem;
+    border-style: solid;
+    border-width: 1px;
+    outline: none;
+    resize: none;
+    padding: .3rem;
+    background-color: rgba(255, 255, 255, .2);
+    font-size: 1rem;
+}
+
+textarea {
+	margin-bottom: -4px;
+    padding-right: 1.5rem;
+}
+
+input:focus {
+	background-color: rgba(255, 255, 255, .5);
+}
+
+textarea:focus {
+	background-color: rgba(255, 255, 255, .5);
+}
+.important {
+	color: rgba(255, 255, 255, .5);
+	font-style: italic;
+	font-weight: 200;
+    margin-top: -1.8rem;
+	padding-bottom: 3rem;
+}
+
+.message button {
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	border-style: solid;
+	border-width: 2px;
+	background-color: transparent;
+	width: 30rem;
+	color: white;
+	border-color: rgba(255, 255, 255, .5);
+	font-size: 1.1rem;
+	font-weight: 700;
+	margin-bottom: 2rem;
+    cursor: pointer;
+}
+
+button:hover {
+	background-color: white;
+	color: black;
+}
+
+#map img{
+    width: 100%;
+    background-repeat: no-repeat;
+    margin-top: -12px;
+}
+
+.info{
+    margin-left: 2rem;
+    padding-top: 2rem;
+    width: 100%;
+}
+.info h3{
+    margin-bottom: .5rem;
+    color: white;
+    font-size: 1rem;
+}
+footer{
+    background-color: #3C3A47;
+    height: 14rem;
+}
+.footer{
+    gap: auto;
+    color: rgba(255, 255, 255, .8);
+    display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+footer img{
+    display: flex;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+.vertical{
+    display: flex;
+    gap: 5px;
+    padding-top: 8px;
+}
+.vertical p{
+    margin-top: 3px;
+}
+.email a{
+    display: inline-flex;
+    gap: 5px;
+    padding-top: 8px;
+    color: blue;
+}
+.email a:hover{
+    text-decoration: underline;
+}
+.nike img{
+    height: 5rem;
+    width: 11rem;
+    margin-top: 3rem;
+    filter: brightness(50%);
+    margin-left: auto;
+    margin-right: auto;
+}
+.social{
+    display: flex;
+    align-items: end;
+    vertical-align: middle;
+    gap: 1rem;
+    justify-content: end;
+    margin-right: 2rem;
+}
+.social img{
+    height: 2rem;
+    width: 2rem;
+    margin-bottom: 3rem;
+}
+
+.media{
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 4rem;
+    text-align: end;
+    margin-right: 6.6rem;
+}
+
+.copyright{
+    font-size: small;
+    text-align: center;
+    color: rgba(255, 255, 255, .5);
+}
+@media screen and (max-width: 800px){
+     .header img{
+        display: none;
+    }
+    /* EDIT STARTS HERE */
+
+/* EDIT ENDS HERE */
+
+    .log-in{
+        display: none;
+    }
+    .log-in a{
+        padding: 1px 1px;
+        font-size: .8rem;
+        vertical-align: middle;
+        font-weight: 700;
+    }
+    .bar{
+        position: absolute;
+        right: 0;
+        margin-right: 1rem;
+    }
+    .bar img{
+        height: 2.5rem;
+        width: 2.5rem;
+        display: block;
+        margin-top: -2.8rem;
+    }
+    .logo{
+        height: 1rem;
+        width: 1rem;
+        margin-top: -4.2rem;
+        text-align: left;
+    }
+    .logo img{
+        height: 2.5rem;
+        width: 6rem;
+        margin-left: 1rem;
+    }
+    .logo-bar{
+        display: flex;
+    }
+    
+    .best p{
+        font-weight: 700;
+        font-size: 3rem;
+        padding: .5rem .5rem;
+        border-width: 5px;
+    }
+    .top img{
+        display: none;
+    }
+    .nav{
+        display: none;
+    }
+    .best{
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        line-height: 4rem;
+    }
+    .more{
+        padding-top: 2rem;
+    }
+    .more a{
+        font-size: 1.5rem;
+    }
+    .second{
+        grid-template-columns: 1fr 1fr;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    .contact a{
+        font-size: .8rem;
+    
+    }
+    #contact-us label, button{
+        font-size: smaller;
+    }
+    .message{
+        font-size: smaller;
+    }
+    .footer{
+        line-height: .8rem;
+        padding-bottom: 2rem;
+    }
+    .footer img{
+        height: 1rem;
+        width: 1rem;
+    }
+    .info{
+        margin-top: 2rem;
+    }
+    .vertical{
+        margin-bottom: -1rem;
+    }
+    .email{
+        margin-bottom: -1rem;
+    }
+    .nike img{
+        display: none;
+    }
+    .media{
+        margin-top: 4rem;
+        margin-right: 6.5rem;
+    }
+    .social{
+        margin-bottom: -5px;
+    }
+    .social img{
+        height: 2rem;
+        width: 2rem;
+    }
+    .copyright p{
+        margin-bottom: -4rem;
+        font-size: smaller;
+    }
+    /* Style for Back to Top Button */
+#backToTopBtn {
+    display: none; /* Initially hide the button */
+    position: fixed; /* Fixed position on the screen */
+    bottom: 20px; /* Distance from the bottom */
+    right: 30px; /* Distance from the right */
+    z-index: 99; /* Ensure it's above other elements */
+    font-size: 24px; /* Font size of the arrow */
+    background-color: #007bff; /* Button background color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    outline: none; /* Remove outline */
+    cursor: pointer; /* Cursor style */
+    padding: 16px 3px 16px 4px;
+    border-radius: 50%; /* Rounded shape */
+}
+#backToTopBtn img {
+    width: 3rem;
+    margin-bottom: -2px;
+}
+
+#backToTopBtn:hover {
+    box-shadow: 0 0 10px #007bff;
+}
+
+}
+@media screen and (max-width: 496px) {
+    .check {
+        margin-top: 4px;
+        display: inline;
+        margin-left: 15.2rem;
+    }
+    .exclamation {
+        margin-top: 4px;
+        display: inline;
+        margin-left: 15.2rem;
+    }
+}
+@media screen and (max-width: 492px) {
+    .check {
+        margin-top: 4px;
+        display: inline;
+        margin-left: 15rem;
+    }
+    .exclamation {
+        margin-top: 4px;
+        display: inline;
+        margin-left: 15rem;
+    }
+}
+@media screen and (max-width: 490px) {
+    .check {
+        margin-top: 4px;
+        display: inline;
+        margin-left: 15rem;
+    }
+    .exclamation {
+        margin-top: 4px;
+        display: inline;
+        margin-left: 15rem;
+    }
+}
+ /* @media screen and (max-width: 1100px){
+    .contact a{
+        font-size: .9rem;
+    }
+}
+@media screen and (max-width: 1000px){
+    .contact a{
+        font-size: .8rem;
+    }
+}
+@media screen and (max-width: 900px){
+    .contact a{
+        font-size: .8rem;
+    }
+}
+@media screen and (max-width: 850px){
+    .contact a{
+        font-size: .7rem;
+    }
+} */
+@media screen and (max-width: 840px){
+    .form-control img {
+        margin-right: 10.3rem;
+    }
+} 
+@media only screen and (max-width: 400px){
+    html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+}
+/* @media  screen and (max-width: 466px){
+    html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+    .side-bar {
+        right: 10.2rem;
+    }
+    
+} */
+@media  screen and (max-width: 466px) {
+    html, body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+        position: relative;
+        /* overflow: scroll;
+        -webkit-overflow-scrolling: touch; */
+    }
+    input, textarea {
+        width: 100%;
+    }
+}
+@media  screen and (max-width: 394px) {
+    *{
+        scroll-behavior: smooth;
+    }
+    html body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+        /* position: relative;
+        overflow: scroll;
+        -webkit-overflow-scrolling: touch; */
+    }
+    #backToTopBtn {
+    display: none; /* Initially hide the button */
+    position: fixed; /* Fixed position on the screen */
+    bottom: 20px; /* Distance from the bottom */
+    right: 30px; /* Distance from the right */
+    z-index: 99; /* Ensure it's above other elements */
+    font-size: 24px; /* Font size of the arrow */
+    background-color: #007bff; /* Button background color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    outline: none; /* Remove outline */
+    cursor: pointer; /* Cursor style */
+    padding: 16px 3px 16px 4px;
+    border-radius: 50%; /* Rounded shape */
+}
+#backToTopBtn img {
+    width: 3rem;
+    margin-bottom: -2px;
+}
+
+#backToTopBtn:hover {
+    box-shadow: 0 0 10px #007bff;
+}
+
+    .media {
+        margin-right: 1.8rem;
+    }
+   .social img{
+    height: 1.3rem;
+    width: 1.3rem;
+    margin-right: -8px;
+   }
+    .message button {
+        width: 100%;
+    }
+    input, textarea {
+        width: 100%;
+    }
+}
+@media  screen and (max-width: 467px) {
+    html, body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+        position: relative;
+        /* overflow: scroll;
+        -webkit-overflow-scrolling: touch; */
+    }
+    
+    input, textarea {
+        width: 100%;
+    }
+}
+@media  screen and (max-width: 488px) {
+    html, body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+        /* overflow: scroll;
+        -webkit-overflow-scrolling: touch; */
+    }
+    
+    input, textarea {
+        width: 100%;
+    }
+}
+@media  screen and (max-width: 477px) {
+    html, body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+        position: relative;
+        /* overflow: scroll;
+        -webkit-overflow-scrolling: touch; */
+
+    }
+    
+    input, textarea {
+        width: 100%;
+    }
+    
+}
+@media  screen and (max-width: 503px){
+    #backToTopBtn {
+        display: none; /* Initially hide the button */
+        position: fixed; /* Fixed position on the screen */
+        bottom: 20px; /* Distance from the bottom */
+        right: 30px; /* Distance from the right */
+        z-index: 99; /* Ensure it's above other elements */
+        font-size: 24px; /* Font size of the arrow */
+        background-color: #007bff; /* Button background color */
+        color: white; /* Text color */
+        border: none; /* Remove border */
+        outline: none; /* Remove outline */
+        cursor: pointer; /* Cursor style */
+        padding: 16px 3px 16px 4px;
+        border-radius: 50%; /* Rounded shape */
+    }
+    #backToTopBtn img {
+        width: 3rem;
+        margin-bottom: -2px;
+    }
+    
+    #backToTopBtn:hover {
+        box-shadow: 0 0 10px #007bff;
+    }
+    * {
+        scroll-behavior: smooth;
+    }
+}
+/* @media only screen and (max-width: 360px){
+    htm
+    
+    l, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+
+    }
+} */
+/* @media screen and (max-width: 436px) {
+    .contact a {
+        font-size: .6rem;
+    }
+}
+@media screen and (max-width: 424px) {
+    .contact a {
+        font-size: .5rem;
+    }
+} */

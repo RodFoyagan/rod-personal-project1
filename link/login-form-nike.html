@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>Login form</title>
+
+		<link rel="stylesheet" href="log-in.css">
+
+	</head>
+	<body>
+		<div class="learn">
+					<form action="" id="form">
+						<h1>Sign in with your<br>credential</h1>
+						<div  class="form-control" id="log-in_email">
+							<label class="regEmail" for="login-email">email address</label>
+							<input class="width" type="email" name="login-email" id="login-email">
+                    		<p class="error-message">error message.</p>
+						</div>
+						<div class="form-control" id="log-in_password">
+							<label for="login-password">password</label>
+							<input class="width" type="password" name="login-password" id="login-password">
+							<img class="close-eye" src="images/close-eye.png" id="eyecon">
+                    		<p class="error-message">error message.</p>
+						</div>
+						<div class="checkbox">
+							<input class="box" type="checkbox" name="login-checkbox" id="login-checkbox">
+							<label for="login-checkbox"><span>remember me</span></label>
+			
+						</div>
+						<button><a href="C:/Users/rod/Desktop/html%20practice/index.html"></a>Sign in</button>
+					</form>
+		</div>
+
+		<script>
+			const eyecon = document.getElementById("eyecon");
+			const password = document.getElementById("login-password");
+
+			eyecon.onclick = function() {
+				if(password.type == "password") {
+					password.type = "text";
+					eyecon.src = "images/open-eye.png";
+				} else {
+					password.type = "password";
+					eyecon.src = "images/close-eye.png";
+				}
+			}
+
+const form = document.getElementById("form");
+const email = document.getElementById("login-email");
+const pass = document.getElementById("login-password");
+
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault(); // Prevent the default form submission
+    if (checkInputs()) { // Check inputs first
+    
+        // Use a timeout to ensure styles are applied before showing the alert
+        setTimeout(() => {
+            alert("Log In Seccessful!"); // Show alert
+            form.submit(); // Submit the form
+        }, 0);
+    }
+});
+
+function checkInputs() {
+    const emailValue = email.value.trim();
+	const passValue = pass.value.trim();
+    let isValid = true;
+
+        if(emailValue === "") {
+            setErrorFor(email, "Email cannot be blank.");
+			email.style.border = "2px solid red";
+            isValid = false;
+        } else if (!isValidEmail(emailValue)) {
+            setErrorFor(email, "Invalid email input.");
+            isValid = false;
+        } else {
+            setSuccessFor(email);
+			email.style.border = "2px solid green";
+        }
+
+		if(passValue === "") {
+			setErrorFor(pass, "You should enter you password!")
+			pass.style.border = "2px solid red";
+			isValid = false;
+		} else if (passValue.length < 6 || passValue.length > 16) {
+			setErrorFor(pass, "Password must be 6 to 16 characters.");
+			pass.style.border = "2px solid red";
+			isValid = false;
+		} else {
+			setSuccessFor(pass);
+			pass.style.border = "2px solid green";
+		}
+
+    return isValid; // Return the validation result
+		}
+
+	function setErrorFor(input, message) {
+    	const formControl = input.parentElement;
+    	const errorMessage = formControl.querySelector("p.error-message");
+    	errorMessage.innerText = message;
+    	formControl.className = "form-control error";
+    	errorMessage.style.visibility = "visible";
+		}
+	function setSuccessFor(input) {
+    	const formControl = input.parentElement;
+    	formControl.className = "form-control success";
+    	const errorMessage = formControl.querySelector("p.error-message");
+    	errorMessage.style.visibility = "hidden";
+	}
+
+function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+		</script>
+	</body>
+</html>
